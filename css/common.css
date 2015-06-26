@@ -1,0 +1,6 @@
+body {
+	background: #cdd;
+}
+input[type=text], textarea {
+	background: #eee;
+}
