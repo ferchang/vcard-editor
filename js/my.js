@@ -36,9 +36,9 @@ function toggle_all_repetitive_contacts() {
 all_contacts_selected=false;
 
 function toggle_all() {
-	var tmp=$('input:checkbox#no_del').prop('checked');
-	$('input:checkbox').prop('checked', !all_contacts_selected);
-	$('input:checkbox#no_del').prop('checked', tmp);
+	//var tmp=$('input:checkbox#no_del').prop('checked');
+	$('input:checkbox.contact').prop('checked', !all_contacts_selected);
+	//$('input:checkbox#no_del').prop('checked', tmp);
 	all_contacts_selected=!all_contacts_selected;
 	$('#toggle_all_btn').text((all_contacts_selected)? 'Deselect all contacts':'Select all contacts');
 }

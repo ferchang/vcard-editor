@@ -244,9 +244,11 @@ foreach($cards as $index=>$card) {
 		
 	if(!$search) {
 		echo '<td align=center>', "<input style='width: 10px' type=checkbox name=\"cards[$index][del]\" value='1'";
-		if(isset($card['error'])) echo ' class=error_contact ';
-		else if(isset($card['repetitive'])) echo ' class=repetitive_contact ';
-		echo 'onclick="checkbox_click(event, this)">', '</td>';
+		echo ' class="contact';
+		if(isset($card['error'])) echo ' error_contact';
+		else if(isset($card['repetitive'])) echo ' repetitive_contact';
+		echo '"';
+		echo ' onclick="checkbox_click(event, this)">', '</td>';
 	}
 	
 	$pre=$cur;
@@ -330,7 +332,7 @@ if(!$search) {
 		if($i>=$visible_new_rows) echo " style='display: none' ";
 		echo '>';
 		echo '<td align=center style="background: rgb(109,253,68)" >', $index+1, '</td>';
-		echo '<td align=center>', "<input style='width: 10px' type=checkbox name=\"cards[$index][del]\" value='1' class=new onclick='checkbox_click(event, this)'>", '</td>';
+		echo '<td align=center>', "<input style='width: 10px' type=checkbox name=\"cards[$index][del]\" class='contact' value='1' class=new onclick='checkbox_click(event, this)'>", '</td>';
 		echo "<input type=hidden name=\"cards[$index][new]\" value=1>";
 
 		foreach($fields as $val) {

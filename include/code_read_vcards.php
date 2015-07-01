@@ -10,7 +10,7 @@ $cards=array();
 
 foreach($matches[0] as $key=>$val) {
 
-	$pat='/([^:]+):([^:]+)\r\n/';
+	$pat='/([^:]+):([^:]+)\r?\n/';
 
 	preg_match_all($pat, $val, $matches);
 
