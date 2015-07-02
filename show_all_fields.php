@@ -50,7 +50,7 @@ foreach($matches[0] as $key=>$val) {
 
 	$val.="\r\n";
 
-	$pat='/([^:]+):([^:]+)\r\n/';
+	$pat='/([^:]+):([^:]+)\r?\n/';
 
 	preg_match_all($pat, $val, $matches);
 
