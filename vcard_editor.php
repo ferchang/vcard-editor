@@ -1,7 +1,7 @@
 <?php
 
 /*
-v 0.7
+v 0.7.1
 ad-hoc vcard editor by hamidreza.mz712 -=At=- gmail -=Dot=- com
 this works with vcard v2.1 format.
 probably not usable as a general vcard editor, but i hope the code can be useful for possibly future projects.
@@ -332,7 +332,7 @@ if(!$search) {
 		if($i>=$visible_new_rows) echo " style='display: none' ";
 		echo '>';
 		echo '<td align=center style="background: rgb(109,253,68)" >', $index+1, '</td>';
-		echo '<td align=center>', "<input style='width: 10px' type=checkbox name=\"cards[$index][del]\" class='contact' value='1' class=new onclick='checkbox_click(event, this)'>", '</td>';
+		echo '<td align=center>', "<input style='width: 10px' type=checkbox name=\"cards[$index][del]\" class='contact new' value='1' onclick='checkbox_click(event, this)'>", '</td>';
 		echo "<input type=hidden name=\"cards[$index][new]\" value=1>";
 
 		foreach($fields as $val) {
