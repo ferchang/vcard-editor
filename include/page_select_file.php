@@ -2,11 +2,11 @@
 
 $files=glob('vcards/*.vcf');
 
-if(count($files)===1) {
+/*if(count($files)===1) {
 	$file=basename($files[0]);
-	header("Location: vcard_editor.php?file=$file");
+	header("Location: $target?file=$file");
 	exit;
-}
+}*/
 
 ?>
 <html>
@@ -24,6 +24,8 @@ li {
 <body><table width='100%' height='100%'><tr><td align=center valign=center>
 <h3>Choose a file:</h3>
 <?php
+
+if(!count($files)) echo '<h4 style="color: red">No vcard (.vcf) files found!</h4>';
 
 echo '<table><tr><td><ul><ol>';
 
