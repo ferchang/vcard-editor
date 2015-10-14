@@ -1,7 +1,7 @@
 <?php
 
 /*
-v 0.7.1
+v 0.7.2
 ad-hoc vcard editor by hamidreza.mz712 -=At=- gmail -=Dot=- com
 this works with vcard v2.1 format.
 probably not usable as a general vcard editor, but i hope the code can be useful for possibly future projects.
