@@ -1,6 +1,6 @@
 <?php
 
-if($sort_field=='no') return;
+if($sort_field=='no' or empty($cards)) return;
 
 if($sort_field=='rand') {
 	shuffle($cards);
