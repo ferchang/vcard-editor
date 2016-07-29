@@ -79,6 +79,14 @@ require 'include/code_detect_repetitives.php';
 
 header("Content-type: text/html; charset=$charset");
 
+if(isset($_COOKIE['contacts2show']) and $_COOKIE['contacts2show']!=='All' and !$search) {
+	$contacts2show=$_COOKIE['contacts2show'];
+	if(count($cards)>$contacts2show) {
+		$cards=array_slice($cards, 0, $contacts2show);
+		$partial=true;
+	}
+}
+
 ?>
 
 <html dir=rtl>
@@ -105,12 +113,17 @@ a {
 }
 <?php
 if($search) echo 'body { border: thick solid orange; padding: 10px; }';
+if(isset($partial)) echo 'body { border: thick solid blue; padding: 10px; }';
 ?>
 </style>
 <script src='js/jquery.js'></script>
 <script src='js/my.js'></script>
+<script src='js/jscookie.js'></script>
 <script>
-
+function warn_partial_save() {
+	if(confirm("Warning: Contacts shown are partial!\nDo you really want to save them over the original contacts?")) return true;
+	else return false;
+}
 </script>
 </head>
 <body dir=rtl onload='on_load()'>
@@ -356,7 +369,11 @@ if(!$search) {
 	echo '<center dir=ltr><input type=button onclick="add_new_row();" value="Add new row';
 	if($add_rows_count>1) echo 's';
 	echo '">';
-	echo "&nbsp;&nbsp;<button disabled onclick='toggle_all(); return false' id=toggle_all_btn>Select all contacts</button>&nbsp;&nbsp;<button disabled onclick='toggle_all_error_contacts(); return false' id=toggle_error_contacts_btn>Select all error contacts($error_contacts)</button>&nbsp;&nbsp;<button disabled onclick='toggle_all_repetitive_contacts(); return false' id=toggle_repetitive_contacts_btn>Select all repetitive contacts($repetitive_contacts)</button>&nbsp;&nbsp;<input type=submit value='Save contacts' style='margin-top: 5px'>&nbsp;&nbsp;<input type=submit value='Undo(", $undo_count, ")'";
+	echo "&nbsp;&nbsp;<button disabled onclick='toggle_all(); return false' id=toggle_all_btn>Select all contacts</button>&nbsp;&nbsp;<button disabled onclick='toggle_all_error_contacts(); return false' id=toggle_error_contacts_btn>Select all error contacts($error_contacts)</button>&nbsp;&nbsp;<button disabled onclick='toggle_all_repetitive_contacts(); return false' id=toggle_repetitive_contacts_btn>Select all repetitive contacts($repetitive_contacts)</button>&nbsp;&nbsp;";
+	echo "<input type=submit value='Save contacts' style='margin-top: 5px'";
+	if(isset($partial)) echo " onclick='return warn_partial_save()' ";
+	echo '>';
+	echo "&nbsp;&nbsp;<input type=submit value='Undo(", $undo_count, ")'";
 	echo " style='margin-top: 5px; width: 70px' name='undo' ";
 	if(!$undo_count) echo 'disabled';
 	echo "></center>";
