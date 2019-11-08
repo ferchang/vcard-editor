@@ -4,3 +4,19 @@ body {
 input[type=text], textarea {
 	background: #eee;
 }
+
+#alert_div {
+	background: #000;	
+	font-size: 30pt;
+	color: #ddd;
+	padding: 15pt;
+	border: 5pt double #fff;
+}
+
+#alert_title_div {
+	
+}
+
+#alert_contents_div {
+
+}

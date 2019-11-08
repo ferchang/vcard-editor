@@ -44,9 +44,15 @@ function toggle_all() {
 }
 
 function on_load() {
+
 	$('#toggle_all_btn').prop('disabled', false);
+	
 	if(error_contacts) $('#toggle_error_contacts_btn').prop('disabled', false);
 	if(repetitive_contacts) $('#toggle_repetitive_contacts_btn').prop('disabled', false);
+	
+	$(":text").on('click', cell_click);
+	$("textarea").on('click', cell_click);
+
 }
 
 prev_ckeckbox=-1;
@@ -71,4 +77,9 @@ function checkbox_click(evt, obj) {
 		var name='cards['+i+'][del]';
 		$("input[name='"+name+"']").prop('checked', prev_ckecked);
 	}
+}
+
+function cell_click(e) {
+	if(!e.ctrlKey) return;
+	my_alert('', e.target.value);
 }

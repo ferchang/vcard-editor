@@ -109,11 +109,10 @@ if($search) echo 'body { border: thick solid orange; padding: 10px; }';
 </style>
 <script src='js/jquery.js'></script>
 <script src='js/my.js'></script>
-<script>
-
-</script>
 </head>
-<body dir=rtl onload='on_load()'>
+<body dir=rtl onload='on_load();' >
+
+<div id="alert_div" style="position: absolute; top: 0px; left: 0px; visibility: hidden; text-align: center" ><div id="alert_title_div" style="font-size: bigger; font-weight: bold" align="center"></div><br><div id="alert_contents_div" "></div><br><a id="alert_close" href="javascript: hide_alert()" style="margin-top: 5px; color: inherit">Close</a></center></div>
 
 <?php
 
@@ -266,7 +265,7 @@ foreach($cards as $index=>$card) {
 			if($val=='name') {
 				echo "<input type=text name=\"cards[$index][name]\" value=\"";
 				echo $card[$val];
-				echo '">';
+				echo '" >';
 			}
 			else if($val=='photo') {
 				if($show_photos) {
@@ -347,7 +346,7 @@ if(!$search) {
 		
 	}
 
-}
+} else echo "<script>error_contacts=repetitive_contacts=0;</script>";
 
 //------------------------------
 
@@ -364,5 +363,6 @@ if(!$search) {
 echo '</form>';
 
 ?>
+<script src='js/my_alert.js'></script>
 </body>
 </html>
